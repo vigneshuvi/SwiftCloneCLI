@@ -147,7 +147,7 @@ open class CloneCLI {
         bitBucketURL = "https://\(username):\(password)@bitbucket.org/";
         bitBucketRepoName = reponame;
     }
-
+    
     // Navigate to check out patha and clone the master branch.
     open func authendicate() {
         CloneCLI.cloneCLI.setApplicationName(CloneCLI.cloneCLI.applicatonName)
@@ -158,7 +158,7 @@ open class CloneCLI {
         shell("pwd", applicatonCheckOutPathName)
         shell("ls", applicatonCheckOutPathName)
         
-        let status = shellwithoptions("/usr/bin/git", comments: ["clone", "-b", "master", "--verbose", "\(CloneCLI.cloneCLI.bitBucketURL)\(CloneCLI.cloneCLI.bitBucketRepoName).git"], path: applicatonCheckOutPathName)
+        let status = shellwithoptions(SystemCommands.git.rawValue, comments: ["clone", "-b", "master", "--verbose", "\(CloneCLI.cloneCLI.bitBucketURL)\(CloneCLI.cloneCLI.bitBucketRepoName).git"], path: applicatonCheckOutPathName)
         print("status : \(status)")
         
     }
@@ -190,7 +190,7 @@ open class CloneCLI {
         }
         return path
     }
-
+    
 }
 
 

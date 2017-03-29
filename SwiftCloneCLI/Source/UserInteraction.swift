@@ -44,8 +44,8 @@ class UserInteraction {
                     printLog(LogType.Error, text:"Please enter valid username name!")
                 }
             case .GetBitBucketPassword:
-                printLog(LogType.Info, text:"Please enter BitBucket Password:")
-                let password = getInput()
+                let passchar = getpass("Please enter BitBucket Password:\n");
+                let password = String(cString: passchar!, encoding: String.Encoding.utf8)!
                 if password.characters.count > 0 {
                     CloneCLI.cloneCLI.bitBucketPassword = password.replacingOccurrences(of: "@", with: "%40");
                     nextStep = CloneSteps.GetBitBucketRepo
